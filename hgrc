@@ -1,0 +1,6 @@
+[ui]
+username = Nasser Alshammari <designernasser@gmail.com>
+verbose = True
+
+[extensions]
+color =

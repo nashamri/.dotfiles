@@ -1,0 +1,46 @@
+alias recdesk='ffmpeg -f alsa -ac 1 -i pulse -f x11grab -r 30 -s 1366x768 -i :0.0 -acodec pcm_s16le -vcodec libx264 -preset ultrafast -crf 0 -threads 1 -y screencast.avi'
+
+alias pg='ping 8.8.8.8'
+alias ssht='ssh -D 8888 root@nass3r.com'
+
+## system ## {{{
+alias reboot='sudo systemctl reboot'
+alias poweroff='sudo systemctl poweroff'
+alias screensaveroff='xset -dpms; xset s off'
+alias screensaveron='xset dpms force on'
+alias edgeScroll='synclient VertEdgeScroll=1'
+# }}}
+
+## fancontrol ## {{{
+alias fanauto='echo level auto | sudo tee /proc/acpi/ibm/fan'
+alias fan7='echo level 7 | sudo tee /proc/acpi/ibm/fan'
+alias fand='echo level disengaged | sudo tee /proc/acpi/ibm/fan'
+# }}}
+
+## ls ## {{{
+alias ls='ls --color=auto'
+alias ll='ls -l'
+# }}}
+
+## Pacman/Yaourt aliases ## {{{
+# if necessary, replace 'pacman' with your favorite AUR helper and adapt the commands accordingly
+alias pac="sudo /usr/bin/pacman -S"		# default action	- install one or more packages
+alias pacu="sudo /usr/bin/pacman -Syu"		# '[u]pdate'		- upgrade all packages to their newest version
+alias pacr="sudo /usr/bin/pacman -Rns"		# '[r]emove'		- uninstall one or more packages
+alias pacs="/usr/bin/pacman -Ss"		# '[s]earch'		- search for a package using one or more keywords
+alias paci="/usr/bin/pacman -Si"		# '[i]nfo'		- show information about a package
+alias paclo="/usr/bin/pacman -Qdt"		# '[l]ist [o]rphans'	- list all packages which are orphaned
+alias pacc="sudo /usr/bin/pacman -Scc"		# '[c]lean cache'	- delete all not currently installed package files
+alias paclf="/usr/bin/pacman -Ql"		# '[l]ist [f]iles'	- list all files installed by a given package
+alias pacexpl="/usr/bin/pacman -D --asexp"	# 'mark as [expl]icit'	- mark one or more packages as explicitly installed 
+alias pacimpl="/usr/bin/pacman -D --asdep"	# 'mark as [impl]icit'	- mark one or more packages as non explicitly installed
+
+# '[r]emove [o]rphans' - recursively remove ALL orphaned packages
+alias pacro="/usr/bin/pacman -Qtdq > /dev/null && sudo /usr/bin/pacman -Rns \$(/usr/bin/pacman -Qtdq | sed -e ':a;N;$!ba;s/\n/ /g')"
+
+alias yao="/usr/bin/yaourt -S"	        	# default action	- install one or more packages
+alias yaou="sudo /usr/bin/yaourt -Syu"		# '[u]pdate'		- upgrade all packages to their newest version
+alias yaor="sudo /usr/bin/yaourt -Rns"		# '[r]emove'		- uninstall one or more packages
+alias yaos="/usr/bin/yaourt -Ss"		# '[s]earch'		- search for a package using one or more keywords
+alias yaoi="/usr/bin/yaourt -Si"		# '[i]nfo'		- show information about a package
+# }}}
