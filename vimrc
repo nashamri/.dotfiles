@@ -12,7 +12,9 @@ call plug#begin()
 Plug 'junegunn/goyo.vim'
 Plug 'klen/python-mode'
 Plug 'ervandew/supertab'
-"Plug 'tpope/vim-unimpaired'
+Plug 'vim-scripts/taglist.vim'
+Plug 'SirVer/ultisnips'
+Plug 'airblade/vim-gitgutter'
 
 "Colorschemes
 Plug 'croaker/mustang-vim'
@@ -193,7 +195,7 @@ set guioptions-=T  "No toolbar
 "}}}
 "Colorscheme {{{
 syntax on
-colorscheme lilypink
+colorscheme tir_black
 "}}}
 
 "}}}
@@ -304,5 +306,26 @@ nnoremap <s-F11> :Goyo <cr>
 "Supertab {{{
 "Make the selection start from the top
 let g:SuperTabDefaultCompletionType = "<c-n>"
+"}}}
+"Python-mode {{{
+"Python version
+let g:pymode_python = 'python' "options 'python', 'python3'
+"Folding
+let g:pymode_folding = 0
+"}}}
+"Taglist {{{
+"Toggle
+nnoremap <silent> <F8> :TlistToggle<cr>
+
+"Set the focus to the taglist window
+let Tlist_GainFocus_On_ToggleOpen = 1
+
+"Only show one file
+let Tlist_Show_One_File = 1
+"}}}
+"Ultisnip {{{
+"Jumping to next and previous
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "}}}
 "}}}
