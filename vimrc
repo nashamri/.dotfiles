@@ -312,6 +312,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 let g:pymode_python = 'python' "options 'python', 'python3'
 "Folding
 let g:pymode_folding = 0
+"Only code complete when I press CTRL+SPACE
+let g:pymode_rope_complete_on_dot = 0
 "}}}
 "Taglist {{{
 "Toggle

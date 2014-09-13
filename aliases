@@ -2,6 +2,7 @@ alias recdesk='ffmpeg -f alsa -ac 1 -i pulse -f x11grab -r 30 -s 1366x768 -i :0.
 
 alias pg='ping 8.8.8.8'
 alias ssht='ssh -D 8888 root@nass3r.com'
+alias nudo='sudo docker run -t -i --net=host with_ipython:v3 /bin/bash'
 
 ## system ## {{{
 alias reboot='sudo systemctl reboot'
