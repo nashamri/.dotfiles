@@ -18,3 +18,8 @@ for file in $files; do
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
+
+echo "Creating UltiSnips"
+mkdir -p ~/.vim/UltiSnips
+ln -s ~/.dotfiles/UltiSnips/* ~/.vim/UltiSnips
+echo "Done"
