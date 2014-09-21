@@ -15,11 +15,16 @@ Plug 'ervandew/supertab'
 Plug 'vim-scripts/taglist.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-markdown'
+Plug 'DrawIt'
+
+"Depends on other software
+"gem install redcarpet pygments.rb
+"npm -g install instant-markdown-d
+Plug 'suan/vim-instant-markdown'
 
 "Colorschemes
-Plug 'croaker/mustang-vim'
-Plug 'endel/vim-github-colorscheme'
-Plug 'noah/vim256-color'
+Plug 'nashamri/tir_black'
 
 call plug#end()
 
@@ -290,6 +295,9 @@ vnoremap > >gv
 nnoremap j gj
 nnoremap k gk
 
+"Turn on British english spellchecking
+noremap <localleader>s :setlocal spell spelllang=en_gb<cr>
+
 "Quick Editing {{{
 
 nnoremap <leader>ev :e $MYVIMRC<cr>
@@ -330,4 +338,6 @@ let Tlist_Show_One_File = 1
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "}}}
+"Instant-markdown
+let g:instant_markdown_autostart = 0
 "}}}
