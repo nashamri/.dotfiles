@@ -77,3 +77,6 @@ setxkbmap -layout us,ara -option grp:alt_shift_toggle
 # -t to only disable clicks and not mouse movements
 #syndaemon -i 0.2 -K -t -d
 source /etc/profile.d/fzf.sh
+
+# Keyboard speed and delay
+xset r rate 200 30
