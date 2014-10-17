@@ -18,11 +18,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-markdown'
 Plug 'DrawIt'
 
-"Depends on other software
-"gem install redcarpet pygments.rb
-"npm -g install instant-markdown-d
-Plug 'suan/vim-instant-markdown'
-
 "Colorschemes
 Plug 'nashamri/tir_black'
 
