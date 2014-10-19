@@ -44,7 +44,7 @@ fi
 ## functions ## {{{
 
 # Simple calculator
-calc() {
+calc () {
     echo "scale=3;$@" | bc -l
 }
 
@@ -66,6 +66,15 @@ note () {
     fi
 }
 
+videoCut () {
+    if [[ $# -le 3 ]]; then
+        echo "videoCut <input> <from> <to> <output>"
+    else 
+        # https://www.virag.si/2012/01/webm-web-video-encoding-tutorial-with-ffmpeg-0-9/
+        ffmpeg -i $1 -codec:v libvpx -quality good -cpu-used 0 -b:v 500k -qmin 10 -qmax 42 -maxrate 500k -bufsize 1000k -threads 4 -vf scale=-1:480 -codec:a libvorbis -b:a 128k -ss $2 -to $3 $4
+    fi
+
+}
 # }}}
 
 # Make Caps an additional Control key
