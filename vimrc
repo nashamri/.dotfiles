@@ -333,6 +333,5 @@ let Tlist_Show_One_File = 1
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 "}}}
-"Instant-markdown
-let g:instant_markdown_autostart = 0
+
 "}}}

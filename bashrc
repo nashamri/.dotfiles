@@ -89,3 +89,5 @@ source /etc/profile.d/fzf.sh
 
 # Keyboard speed and delay
 xset r rate 200 30
+
+PROMPT_DIRTRIM=3

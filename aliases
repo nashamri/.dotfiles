@@ -4,6 +4,10 @@ alias pg='ping 8.8.8.8'
 alias ssht='ssh -D 8888 root@nass3r.com'
 alias rundocker='docker run -ti --net=host --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --privileged'
 alias open='xdg-open'
+appifyFun() {
+    google-chrome-stable --app="$1" &
+}
+alias appify=appifyFun
 
 ## system ## {{{
 alias reboot='sudo systemctl reboot'
@@ -45,4 +49,8 @@ alias yaou="sudo /usr/bin/yaourt -Syu"		# '[u]pdate'		- upgrade all packages to 
 alias yaor="sudo /usr/bin/yaourt -Rns"		# '[r]emove'		- uninstall one or more packages
 alias yaos="/usr/bin/yaourt -Ss"		# '[s]earch'		- search for a package using one or more keywords
 alias yaoi="/usr/bin/yaourt -Si"		# '[i]nfo'		- show information about a package
+
+# Disowned files and folders
+alias pacman-disowned-dirs="comm -23 <(find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type d -print | sed 's/\([^/]\)$/\1\//' | sort -u) <(pacman -Qlq | sort -u)"
+alias pacman-disowned-files="comm -23 <(find / \( -path '/dev' -o -path '/sys' -o -path '/run' -o -path '/tmp' -o -path '/mnt' -o -path '/srv' -o -path '/proc' -o -path '/boot' -o -path '/home' -o -path '/root' -o -path '/media' -o -path '/var/lib/pacman' -o -path '/var/cache/pacman' \) -prune -o -type f -print | sort -u) <(pacman -Qlq | sort -u)"
 # }}}
