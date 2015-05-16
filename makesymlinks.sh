@@ -2,7 +2,7 @@
 
 dir=~/.dotfiles
 olddir=~/.dotfiles_old
-files="vimrc hgrc bashrc gitconfig git-completion.bash git-prompt.sh tmux.conf aliases"
+files="aliases bashrc git-completion.bash git-prompt.sh gitconfig hgrc spacemacs tmux.conf vimrc"
 
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
@@ -22,4 +22,9 @@ done
 echo "Creating UltiSnips"
 mkdir -p ~/.vim/UltiSnips
 ln -s ~/.dotfiles/UltiSnips/* ~/.vim/UltiSnips
+echo "Done"
+
+echo "Creating spacemacs private layer"
+mkdir -p ~/.emacs.d/private
+ln -s ~/.dotfiles/private/* ~/.emacs.d/private
 echo "Done"
