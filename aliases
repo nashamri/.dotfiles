@@ -1,7 +1,6 @@
 alias recdesk='ffmpeg -f alsa -ac 1 -i pulse -f x11grab -r 30 -s 1366x768 -i :0.0 -acodec pcm_s16le -vcodec libx264 -preset ultrafast -crf 0 -threads 1 -y ~/screencast.avi'
-
 alias pg='ping 8.8.8.8'
-alias ssht='ssh -D 8888 root@nass3r.com'
+alias ssht='ssh -D 8888 nasser@nass3r.com'
 alias rundocker='docker run -ti --net=host --rm -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY --privileged'
 alias open='xdg-open'
 appifyFun() {

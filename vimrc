@@ -203,7 +203,7 @@ colorscheme tir_black
 "Key mappings =============================================================={{{
 
 "Use jj to exit insert mode
-imap jj <Esc>
+imap fd <Esc>
 
 "Toggle line numbers
 nnoremap <leader>n :setlocal number!<cr>
@@ -311,10 +311,13 @@ nnoremap <s-F11> :Goyo <cr>
 let g:SuperTabDefaultCompletionType = "<c-n>"
 "}}}
 "Python-mode {{{
+let g:pymode = 1
 "Python version
 let g:pymode_python = 'python' "options 'python', 'python3'
 "Folding
 let g:pymode_folding = 0
+"Linting
+let g:pymode_lint = 0
 "Only code complete when I press CTRL+SPACE
 let g:pymode_rope_complete_on_dot = 0
 "}}}
