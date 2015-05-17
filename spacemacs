@@ -10,7 +10,7 @@
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
-   dotspacemacs-configuration-layers '(auto-completion c-c++ clojure ein emacs-lisp eyebrowse git gnus html javascript markdown org python slime smex spotify syntax-checking themes-megapack xkcd)
+   dotspacemacs-configuration-layers '(auto-completion c-c++ clojure ein emacs-lisp eyebrowse games git gnus html javascript markdown org python slime smex spotify syntax-checking themes-megapack xkcd)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -44,7 +44,7 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   ;; dotspacemacs-default-font '("Andale Mono"
+   dotspacemacs-default-font '("Andale Mono")
    ;;                             :size 15
    ;;                             :weight normal
    ;;                             :width normal
@@ -109,6 +109,7 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (setq powerline-default-separator 'nil)
+  (setq vc-follow-symlinks t)
   (define-key evil-normal-state-map "H" 'evil-beginning-of-line)
   (define-key evil-normal-state-map "L" 'evil-end-of-line)
   (defun sort-words (reverse beg end)
