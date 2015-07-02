@@ -17,6 +17,7 @@
                                        c-c++
                                        clojure
                                        colors
+                                       erc
                                        emacs-lisp
                                        eyebrowse
                                        games
@@ -62,7 +63,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
+   dotspacemacs-themes '(spacemacs-dark
+                         monokai
                          solarized-light
                          solarized-dark
                          leuven
@@ -168,7 +170,6 @@ layers configuration."
  '(ahs-inhibit-face-list nil)
  '(ansi-color-names-vector
    ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
- '(comment-background t)
  '(compilation-message-face (quote default))
  '(fci-rule-color "#49483E" t)
  '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
