@@ -63,8 +63,7 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         monokai
+   dotspacemacs-themes '(monokai
                          solarized-light
                          solarized-dark
                          leuven
@@ -138,7 +137,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq powerline-default-separator 'arrow)
+  (setq powerline-default-separator nil)
   (setq vc-follow-symlinks t)
   (define-key evil-normal-state-map "H" 'evil-beginning-of-line)
   (define-key evil-normal-state-map "L" 'evil-end-of-line)
@@ -153,7 +152,7 @@ layers configuration."
   ;; (eval-after-load 'markdown-mode '(add-hook 'markdown-mode-hook 'company-mode t))
   (setq-default truncate-lines t)
 
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/spacemacs-theme")
+  ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/private/spacemacs-theme")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
