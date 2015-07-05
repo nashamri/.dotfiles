@@ -20,9 +20,17 @@ for file in $files; do
 done
 
 echo "Creating UltiSnips"
+FILE=~/.vim/UltiSnips
+if [ -a $FILE ]; then
+    rm -r $FILE
+fi
 ln -s ~/.dotfiles/UltiSnips ~/.vim/
 echo "Done"
 
 echo "Creating spacemacs private layer"
+FILE=~/.emacs.d/private
+if [ -a $FILE ]; then
+    rm -r $FILE
+fi
 ln -s ~/.dotfiles/private ~/.emacs.d/
 echo "Done"

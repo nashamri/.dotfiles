@@ -37,7 +37,7 @@
                                        smex
                                        spotify
                                        syntax-checking
-                                       themes-megapack
+                                       ;; themes-megapack
                                        xkcd)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -63,7 +63,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
+   dotspacemacs-themes '(;;spacemacs-dark
+                         monokai
                          solarized-light
                          solarized-dark
                          leuven
@@ -149,10 +150,12 @@ layers configuration."
       (interactive "*P\nr")
       (sort-regexp-fields reverse "\\(\\sw\\|\\s_\\)+" "\\&" beg end))
 
+  (add-to-list 'load-path "~/.emacs.d/private/spacemacs-theme")
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/spacemacs-theme")
+
   ;; (eval-after-load 'markdown-mode '(add-hook 'markdown-mode-hook 'company-mode t))
   (setq-default truncate-lines t)
 
-  ;; (add-to-list 'custom-theme-load-path "~/.emacs.d/private/spacemacs-theme")
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
