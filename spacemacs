@@ -37,7 +37,6 @@
                                        smex
                                        spotify
                                        syntax-checking
-                                       ;; themes-megapack
                                        xkcd)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -63,7 +62,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(;;spacemacs-dark
+   dotspacemacs-themes '(spacemacs-dark
+                         spacemacs-light
                          monokai
                          solarized-light
                          solarized-dark
@@ -74,11 +74,11 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   ;; dotspacemacs-default-font '("Andale Mono")
-   ;;                             :size 15
-   ;;                             :weight normal
-   ;;                             :width normal
-   ;;                             :powerline-scale 1.0)
+   dotspacemacs-default-font '("Source Code Pro"
+                               :size 13
+                               :weight normal
+                               :width normal
+                               :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; Major mode leader key is a shortcut key which is the equivalent of
@@ -138,10 +138,21 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
-  (setq powerline-default-separator nil)
-  (setq vc-follow-symlinks t)
+
+
+  ;;;; == KEYBINDINGS ==
   (define-key evil-normal-state-map "H" 'evil-beginning-of-line)
   (define-key evil-normal-state-map "L" 'evil-end-of-line)
+
+  ;;;; == OPTIONS ==
+  (setq powerline-default-separator nil)
+  (setq vc-follow-symlinks t)
+  (setq-default truncate-lines t) ; no wrapping lines
+  (setq indent-tabs-mode nil) ; use space instead of tab
+  ;; python
+  (setq python-indent-offset n)
+
+  ;;;; == FUNCTIONS ==
   (defun sort-words (reverse beg end)
       (interactive "*P\nr")
       (sort-regexp-fields reverse "\\w+" "\\&" beg end))
@@ -150,11 +161,6 @@ layers configuration."
       (interactive "*P\nr")
       (sort-regexp-fields reverse "\\(\\sw\\|\\s_\\)+" "\\&" beg end))
 
-  (add-to-list 'load-path "~/.emacs.d/private/spacemacs-theme")
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/spacemacs-theme")
-
-  ;; (eval-after-load 'markdown-mode '(add-hook 'markdown-mode-hook 'company-mode t))
-  (setq-default truncate-lines t)
 
 )
 
@@ -173,8 +179,21 @@ layers configuration."
  '(ansi-color-names-vector
    ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
  '(compilation-message-face (quote default))
+ '(cua-global-mark-cursor-color "#2aa198")
+ '(cua-normal-cursor-color "#657b83")
+ '(cua-overwrite-cursor-color "#b58900")
+ '(cua-read-only-cursor-color "#859900")
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(fci-rule-color "#49483E" t)
  '(highlight-changes-colors ("#FD5FF0" "#AE81FF"))
+ '(highlight-symbol-colors
+   (--map
+    (solarized-color-blend it "#fdf6e3" 0.25)
+    (quote
+     ("#b58900" "#2aa198" "#dc322f" "#6c71c4" "#859900" "#cb4b16" "#268bd2"))))
+ '(highlight-symbol-foreground-color "#586e75")
  '(highlight-tail-colors
    (("#49483E" . 0)
     ("#67930F" . 20)
@@ -184,12 +203,23 @@ layers configuration."
     ("#A45E0A" . 70)
     ("#A41F99" . 85)
     ("#49483E" . 100)))
+ '(hl-bg-colors
+   (quote
+    ("#DEB542" "#F2804F" "#FF6E64" "#F771AC" "#9EA0E5" "#69B7F0" "#69CABF" "#B4C342")))
+ '(hl-fg-colors
+   (quote
+    ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
  '(org-babel-load-languages (quote ((python . t) (emacs-lisp . t))))
  '(org-confirm-babel-evaluate nil)
  '(paradox-github-token t)
+ '(pos-tip-background-color "#eee8d5")
+ '(pos-tip-foreground-color "#586e75")
  '(ring-bell-function (quote ignore) t)
+ '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
+ '(term-default-bg-color "#fdf6e3")
+ '(term-default-fg-color "#657b83")
  '(vary-text-height t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
