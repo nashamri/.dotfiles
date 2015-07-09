@@ -150,7 +150,7 @@ layers configuration."
   (setq-default truncate-lines t) ; no wrapping lines
   (setq indent-tabs-mode nil) ; use space instead of tab
   ;; python
-  (setq python-indent-offset n)
+  (setq python-indent-offset 2)
 
   ;;;; == FUNCTIONS ==
   (defun sort-words (reverse beg end)
