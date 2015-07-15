@@ -74,10 +74,14 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   ;; dotspacemacs-default-font '("Source Code Pro"
+   ;; dotspacemacs-default-font '("Liberation Mono"
+   dotspacemacs-default-font '("DejaVu Sans Mono"
+                               ;; :size 12
                                :weight normal
                                :width normal
+                               :slant normal
+                               :height 120
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
@@ -149,8 +153,9 @@ layers configuration."
   (setq vc-follow-symlinks t)
   (setq-default truncate-lines t) ; no wrapping lines
   (setq indent-tabs-mode nil) ; use space instead of tab
+  (setq ffap-machine-p-known 'reject) ; to stop pinging hosts with find-file-at-point
   ;; python
-  (setq python-indent-offset 2)
+  (setq python-indent-offset 4)
 
   ;;;; == FUNCTIONS ==
   (defun sort-words (reverse beg end)
@@ -178,6 +183,8 @@ layers configuration."
  '(ahs-inhibit-face-list nil)
  '(ansi-color-names-vector
    ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
@@ -211,6 +218,7 @@ layers configuration."
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(magit-diff-use-overlays nil)
  '(magit-use-overlays nil)
+ '(menu-bar-mode nil)
  '(org-babel-load-languages (quote ((python . t) (emacs-lisp . t))))
  '(org-confirm-babel-evaluate nil)
  '(paradox-github-token t)
@@ -220,6 +228,7 @@ layers configuration."
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
+ '(tool-bar-mode nil)
  '(vary-text-height t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
@@ -250,6 +259,6 @@ layers configuration."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Source Code Pro" :foundry "adobe" :slant normal :weight normal :height 98 :width normal))))
+ '(default ((t (:family "DejaVu Sans Mono" :foundry "unknown" :slant normal :weight normal :height 120 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
