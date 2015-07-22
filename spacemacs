@@ -22,8 +22,8 @@
                                        eyebrowse
                                        games
                                        (git :variables
-                                            git-gutter-use-fringe t
-                                            git-enable-github-support t)
+                                            git-gutter-use-fringe t)
+                                       github
                                        gnus
                                        ipython-notebook
                                        html
