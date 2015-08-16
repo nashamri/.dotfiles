@@ -31,6 +31,8 @@
                                        markdown
                                        org
                                        org-screenshot
+                                       (perspectives :variables
+                                                     perspective-enable-persp-projectile t)
                                        python
                                        shell
                                        slime
@@ -156,6 +158,8 @@ layers configuration."
   (setq ffap-machine-p-known 'reject) ; to stop pinging hosts with find-file-at-point
   ;; python
   (setq python-indent-offset 4)
+  ;; web
+  (setq web-mode-markup-indent-offset 2)
 
   ;;;; == FUNCTIONS ==
   (defun sort-words (reverse beg end)
