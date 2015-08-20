@@ -156,6 +156,8 @@ layers configuration."
   (setq-default truncate-lines t) ; no wrapping lines
   (setq indent-tabs-mode nil) ; use space instead of tab
   (setq ffap-machine-p-known 'reject) ; to stop pinging hosts with find-file-at-point
+  (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f")))
+
   ;; python
   (setq python-indent-offset 4)
   ;; web
