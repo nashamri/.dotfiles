@@ -103,3 +103,8 @@ xset r rate 200 30
 PROMPT_DIRTRIM=3
 
 #source ~/Scripts/ergoKeyboardLayout.sh
+
+# pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
