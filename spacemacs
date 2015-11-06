@@ -19,23 +19,24 @@ values."
    dotspacemacs-configuration-layers
    '(
      auto-completion
+     clojure
      emacs-lisp
      emoji
      erc
      eyebrowse
      git
-     ipython-notebook
      html
+     ipython-notebook
      javascript
      markdown
      org
-     org-screenshot
      (perspectives :variables
                    perspective-enable-persp-projectile t)
      python
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
+     ranger
      spell-checking
      syntax-checking
      version-control
@@ -97,7 +98,7 @@ values."
                                :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.0)
+                               :powerline-scale 1.4)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -206,7 +207,7 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map "L" 'evil-end-of-line)
 
   ;;;; == OPTIONS ==
-  (setq powerline-default-separator nil)
+  (setq powerline-default-separator 'slant)
   (setq vc-follow-symlinks t)
   (setq-default truncate-lines t) ; no wrapping lines
   (setq indent-tabs-mode nil) ; use space instead of tab
@@ -230,3 +231,17 @@ layers configuration. You are free to put any user code."
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(linum-relative-format "%4s ")
+ '(paradox-github-token t))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
