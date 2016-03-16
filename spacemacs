@@ -17,26 +17,37 @@ values."
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
-   '(
-     auto-completion
+   '(auto-completion
      clojure
+     (colors :variables colors-enable-rainbow-identifiers nil)
+     docker
+     demo-it
      emacs-lisp
      emoji
      erc
+     extra-langs
+     ;; spacemacs-ivy
      eyebrowse
+     fancy-narrow
      git
+     gnus
      html
      ipython-notebook
      javascript
+     latex
+     list-processes+
      markdown
+     ;; mu4e
      org
-     (perspectives :variables
-                   perspective-enable-persp-projectile t)
+     ob-ipython
      python
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
      ranger
+     nas-screenshot
+     semantic
+     spacemacs-layouts
      spell-checking
      syntax-checking
      version-control
@@ -66,7 +77,7 @@ values."
    ;; variable is `emacs' then the `holy-mode' is enabled at startup. `hybrid'
    ;; uses emacs key bindings for vim's insert mode, but otherwise leaves evil
    ;; unchanged. (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -98,7 +109,7 @@ values."
                                :size 14
                                :weight normal
                                :width normal
-                               :powerline-scale 1.4)
+                               :powerline-scale 1.0)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -166,7 +177,7 @@ values."
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
@@ -195,6 +206,8 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+  ;; (custom-set-variables '(spacemacs-theme-custom-colors
+  ;;                         '((bg1 . "#66ff00"))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -207,15 +220,22 @@ layers configuration. You are free to put any user code."
   (define-key evil-normal-state-map "L" 'evil-end-of-line)
 
   ;;;; == OPTIONS ==
-  (setq powerline-default-separator 'slant)
+  (setq powerline-default-separator nil)
   (setq vc-follow-symlinks t)
   (setq-default truncate-lines t) ; no wrapping lines
   (setq indent-tabs-mode nil) ; use space instead of tab
   (setq ffap-machine-p-known 'reject) ; to stop pinging hosts with find-file-at-point
   (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f")))
+  (setq org-confirm-babel-evaluate nil)
+  ;; scale latex equations
+  (eval-after-load 'org
+    '(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)))
+  (setq font-latex-fontify-sectioning 1.0)
 
   ;; python
   (setq python-indent-offset 4)
+  (setq python-shell-interpreter "ipython2")
+
   ;; web
   (setq web-mode-markup-indent-offset 2)
 
@@ -227,7 +247,43 @@ layers configuration. You are free to put any user code."
   (defun sort-symbols (reverse beg end)
     (interactive "*P\nr")
     (sort-regexp-fields reverse "\\(\\sw\\|\\s_\\)+" "\\&" beg end))
-)
+
+  (defun nasser/export-supervisory-meeting ()
+    (interactive)
+       "Exports pdf of my supervisory meetings."
+       (org-latex-export-to-pdf nil t nil nil nil))
+
+  (defun org-export-ignore-headlines (data backend info)
+    "Remove headlines tagged \"ignore\" retaining contents and promoting children.
+Each headline tagged \"ignore\" will be removed retaining its
+contents and promoting any children headlines to the level of the
+parent."
+    (org-element-map data 'headline
+      (lambda (object)
+        (when (member "ignore" (org-element-property :tags object))
+          (let ((level-top (org-element-property :level object))
+                level-diff)
+            (mapc (lambda (el)
+                    ;; recursively promote all nested headlines
+                    (org-element-map el 'headline
+                      (lambda (el)
+                        (when (equal 'headline (org-element-type el))
+                          (unless level-diff
+                            (setq level-diff (- (org-element-property :level el)
+                                                level-top)))
+                          (org-element-put-property el
+                                                    :level (- (org-element-property :level el)
+                                                              level-diff)))))
+                    ;; insert back into parse tree
+                    (org-element-insert-before el object))
+                  (org-element-contents object)))
+          (org-element-extract-element object)))
+      info nil)
+    data)
+
+  (add-hook 'org-export-filter-parse-tree-functions 'org-export-ignore-headlines)
+
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -236,8 +292,24 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-faces-vector
+   [default default default italic underline success warning error])
+ '(ansi-color-names-vector
+   ["black" "red3" "ForestGreen" "yellow3" "blue" "magenta3" "DeepSkyBlue" "gray50"])
+ '(custom-safe-themes
+   (quote
+    ("3ac266781ee0ac3aa74a6913a1506924cad669f111564507249f0ffa7c5e4b53" "6ecd762f08fd5c3aab65585d5aa04f6ae8b44d969df4be669259975dac849687" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" default)))
  '(linum-relative-format "%4s ")
- '(paradox-github-token t))
+ '(org-babel-python-command "python2")
+ '(org-babel-python-mode (quote python))
+ '(org-file-apps
+   (quote
+    ((auto-mode . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . "evince %s"))))
+ '(paradox-github-token t)
+ '(spacemacs-theme-org-highlight nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

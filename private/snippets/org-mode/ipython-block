@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: org babel ipython block
+# key: oi 
+# --
+#+BEGIN_SRC ipython :session 
+$0
+#+END_SRC

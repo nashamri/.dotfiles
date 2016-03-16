@@ -1,0 +1,36 @@
+# -*- mode: snippet -*-
+# name: supervisory-meeting
+# key: sm
+# --
+* `(insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))`$0
+:PROPERTIES:
+:EXPORT_FILE_NAME: `(insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)"))`
+:END:
+#+INCLUDE: "./template.org::#setup"
+
+|-------------+---------------------|
+| *Date*      | `(insert (shell-command-to-string "echo -n $(date +%d/%m/%Y)"))`          |
+|-------------+---------------------|
+| *Attendees* | Dr. Mohamed Sedky   |
+|             | Dr. Justin Champion |
+|             | Dr. Carolin Bauer   |
+|             | Nasser Alshammari   |
+|-------------+---------------------|
+** _Summary of progress since the last meeting: \small (to be completed by the student before the meeting)_
+** _List of items to discuss: \small (to be completed by the student before the meeting)_
+** _Record of discussions and agreed targets for the next stage of the work:_
+|---------------+------------+------------|
+| *Main points* | *By whom?* | *By when?* |
+|---------------+------------+------------|
+|               |            |            |
+** _Further notes: \small (if applicable)_
+N/A
+** _Student engagement_:
+- [ ] Excellent
+- [ ] Satisfactory
+- [ ] Unsatisfactory /(please provide further details and a set of remedial actions to address the issues in the Draft Agenda for the Next Meeting)/
+
+** _Draft agenda for the next meeting:_
+** _Date, time and venue for the next meeting:_
+
+#+INCLUDE: "./template.org::#footer"

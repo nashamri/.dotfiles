@@ -100,6 +100,9 @@ source /etc/profile.d/fzf.bash
 # Keyboard speed and delay
 xset r rate 200 30
 
+# Turn on touchpad edge scroll
+synclient VertEdgeScroll=1
+
 PROMPT_DIRTRIM=3
 
 #source ~/Scripts/ergoKeyboardLayout.sh
