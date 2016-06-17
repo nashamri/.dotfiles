@@ -9,14 +9,14 @@
 call plug#begin()
 
 "Plugins
-Plug 'junegunn/goyo.vim'
-Plug 'klen/python-mode'
+"Plug 'junegunn/goyo.vim'
+"Plug 'klen/python-mode'
 Plug 'ervandew/supertab'
-Plug 'vim-scripts/taglist.vim'
+"Plug 'vim-scripts/taglist.vim'
 Plug 'SirVer/ultisnips'
 Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-markdown'
-Plug 'DrawIt'
+"Plug 'tpope/vim-markdown'
+"Plug 'DrawIt'
 
 "Colorschemes
 Plug 'nashamri/tir_black'
@@ -303,33 +303,9 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 
 "Plugins ==================================================================={{{
 
-"Goyo {{{
-nnoremap <s-F11> :Goyo <cr>
-"}}}
 "Supertab {{{
 "Make the selection start from the top
 let g:SuperTabDefaultCompletionType = "<c-n>"
-"}}}
-"Python-mode {{{
-let g:pymode = 1
-"Python version
-let g:pymode_python = 'python' "options 'python', 'python3'
-"Folding
-let g:pymode_folding = 0
-"Linting
-let g:pymode_lint = 0
-"Only code complete when I press CTRL+SPACE
-let g:pymode_rope_complete_on_dot = 0
-"}}}
-"Taglist {{{
-"Toggle
-nnoremap <silent> <F8> :TlistToggle<cr>
-
-"Set the focus to the taglist window
-let Tlist_GainFocus_On_ToggleOpen = 1
-
-"Only show one file
-let Tlist_Show_One_File = 1
 "}}}
 "Ultisnip {{{
 "Jumping to next and previous

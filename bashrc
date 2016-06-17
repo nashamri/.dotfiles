@@ -88,26 +88,18 @@ convert2webm () {
 # }}}
 
 # Make Caps an additional Control key
-setxkbmap -option caps:ctrl_modifier
-setxkbmap -layout us,ara -option grp:win_space_toggle
+#setxkbmap -option caps:ctrl_modifier
+#setxkbmap -layout us,ara -option grp:win_space_toggle
 
-# For palm detection
-# -K to never disable the touchpad when the keystrokes are of the format modifier+key
-# -t to only disable clicks and not mouse movements
-#syndaemon -i 0.2 -K -t -d
-source /etc/profile.d/fzf.bash
+# Touchpad
+synclient PalmDetect=1
+synclient PalmMinWidth=6
+synclient PalmMinZ=60
+synclient HorizTwoFingerScroll=1
+synclient VertEdgeScroll=1
+
 
 # Keyboard speed and delay
 xset r rate 200 30
 
-# Turn on touchpad edge scroll
-synclient VertEdgeScroll=1
-
 PROMPT_DIRTRIM=3
-
-#source ~/Scripts/ergoKeyboardLayout.sh
-
-# pyenv
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
