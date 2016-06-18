@@ -85,6 +85,15 @@ convert2webm () {
     fi
 
 }
+
+anacondactl() {
+    case $1 in
+        start) echo "$PATH" | grep -q "/opt/anaconda/bin:" || export PATH="/opt/anaconda/bin:":$PATH ;;
+        stop)  echo "$PATH" | grep -q "/opt/anaconda/bin:" && export PATH=${PATH/"\/opt\/anaconda\/bin:"/} ;;
+        status) if [ $(echo $PATH | grep anaconda | wc -l) -gt 0 ] ; then echo "Anaconda python" ; else echo "Native python" ; fi ;;
+        *) echo "Usage: anacondactl [start,stop,status]" ;;
+    esac
+}
 # }}}
 
 # Make Caps an additional Control key
