@@ -138,12 +138,12 @@
     (interactive)
        "Exports pdf of my supervisory meetings."
        (org-latex-export-to-pdf nil t nil nil nil))
-  (setq org-agenda-files (list "~/Dropbox/org/phd.org"))
+  (setq org-agenda-files (list "~/Dropbox/Org/phd.org"))
   (setq org-capture-templates
         '(("p" "PhD" entry
-           (file "~/Dropbox/org/phd.org") "* TODO %?" :clock-in t :clock-keep t)
+           (file "~/Dropbox/Org/phd.org") "* TODO %?" :clock-in t :clock-keep t)
           ("P" "PhD with clipboard" entry
-           (file "~/Dropbox/org/phd.org") "* TODO %? %x" :clock-in t :clock-keep t))
+           (file "~/Dropbox/Org/phd.org") "* TODO %? %x" :clock-in t :clock-keep t))
         )
   ;; (setq org-latex-pdf-process (quote ("texi2dvi --pdf --clean --verbose --batch %f")))
   (setq org-latex-pdf-process (quote ("latexmk -pdf %f")))
