@@ -11,17 +11,17 @@
      clojure
      (colors :variables colors-enable-rainbow-identifiers nil)
      emacs-lisp
-     eyebrowse
+     ;; eyebrowse
      git
      github
      html
      ipython-notebook
      javascript
      latex
-     list-processes+
+     ;; list-processes+
      markdown
      org
-     ob-ipython
+     ;; ob-ipython
      (python
       :variables
       python-auto-set-local-pyenv-version 'on-project-switch
@@ -52,7 +52,7 @@
    dotspacemacs-default-package-repository nil
    dotspacemacs-display-default-layout nil
    dotspacemacs-distinguish-gui-tab nil
-   dotspacemacs-editing-style 'hybrid
+   dotspacemacs-editing-style '(hybrid :variables hybrid-mode-enable-hjkl-bindings t)
    dotspacemacs-elpa-https t
    dotspacemacs-elpa-timeout 5
    dotspacemacs-emacs-command-key "SPC"
@@ -116,7 +116,7 @@
 
   ;;;; python
   (setq python-indent-offset 4)
-  (setenv "WORKON_HOME" "~/.pyenv/versions")
+  (setenv "WORKON_HOME" "~/.conda/envs")
   ;; (setq python-shell-interpreter "ipython2")
 
   ;;;; helper functions
