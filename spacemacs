@@ -11,17 +11,17 @@
      clojure
      (colors :variables colors-enable-rainbow-identifiers nil)
      emacs-lisp
-     eyebrowse
+     ;; eyebrowse
      git
      github
      html
      ipython-notebook
      javascript
      latex
-     list-processes+
+     ;; list-processes+
      markdown
      org
-     ob-ipython
+     ;; ob-ipython
      (python
       :variables
       python-auto-set-local-pyenv-version 'on-project-switch
@@ -42,61 +42,56 @@
 
 (defun dotspacemacs/init ()
   (setq-default
-   dotspacemacs-elpa-https t
-   dotspacemacs-elpa-timeout 5
-   dotspacemacs-check-for-update t
-   dotspacemacs-editing-style 'hybrid
-   dotspacemacs-verbose-loading nil
-   dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-lists '(recents projects)
-   dotspacemacs-startup-recent-list-size 5
-   dotspacemacs-scratch-mode 'text-mode
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
-   dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
-                               :weight demibold
-                               :width normal
-                               :powerline-scale 1.2)
-   dotspacemacs-leader-key "SPC"
-   dotspacemacs-emacs-leader-key "M-m"
-   dotspacemacs-major-mode-leader-key ","
-   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
-   dotspacemacs-distinguish-gui-tab nil
-   dotspacemacs-command-key ":"
-   dotspacemacs-remap-Y-to-y$ t
-   dotspacemacs-default-layout-name "Default"
-   dotspacemacs-display-default-layout nil
+   dotspacemacs-active-transparency 90
    dotspacemacs-auto-resume-layouts nil
    dotspacemacs-auto-save-file-location 'cache
-   dotspacemacs-max-rollback-slots 5
-   dotspacemacs-use-ido nil
-   dotspacemacs-helm-resize nil
-   dotspacemacs-helm-no-header nil
-   dotspacemacs-helm-position 'bottom
-   dotspacemacs-enable-paste-micro-state nil
-   dotspacemacs-which-key-delay 0.4
-   dotspacemacs-which-key-position 'bottom
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-check-for-update t
+   dotspacemacs-colorize-cursor-according-to-state t
+   dotspacemacs-default-font '("Source Code Pro" :size 14 :weight demibold :width normal :powerline-scale 1.3)
+   dotspacemacs-default-layout-name "Default"
+   dotspacemacs-default-package-repository nil
+   dotspacemacs-display-default-layout nil
+   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-editing-style '(hybrid :variables hybrid-mode-enable-hjkl-bindings t)
+   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-timeout 5
+   dotspacemacs-emacs-command-key "SPC"
+   dotspacemacs-emacs-leader-key "M-m"
+   dotspacemacs-enable-paste-transient-state nil
+   dotspacemacs-folding-method 'evil
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
-   dotspacemacs-maximized-at-startup nil
-   dotspacemacs-active-transparency 90
-   dotspacemacs-inactive-transparency 90
-   dotspacemacs-mode-line-unicode-symbols t
-   dotspacemacs-smooth-scrolling t
-   dotspacemacs-line-numbers nil
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-helm-no-header nil
+   dotspacemacs-helm-position 'bottom
+   dotspacemacs-helm-resize nil
    dotspacemacs-highlight-delimiters 'all
+   dotspacemacs-inactive-transparency 90
+   dotspacemacs-large-file-size 1
+   dotspacemacs-leader-key "SPC"
+   dotspacemacs-line-numbers nil
+   dotspacemacs-loading-progress-bar t
+   dotspacemacs-major-mode-emacs-leader-key "C-M-m"
+   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-max-rollback-slots 5
+   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-mode-line-unicode-symbols t
    dotspacemacs-persistent-server nil
+   dotspacemacs-remap-Y-to-y$ t
+   dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-search-tools '("ag" "pt" "ack" "grep")
-   dotspacemacs-default-package-repository nil
+   dotspacemacs-show-transient-state-color-guide t
+   dotspacemacs-show-transient-state-title t
+   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smooth-scrolling t
+   dotspacemacs-startup-banner 'official
+   dotspacemacs-startup-lists '((recents . 5) (projects . 7))
+   dotspacemacs-startup-recent-list-size 5
+   dotspacemacs-themes '(spacemacs-dark spacemacs-light solarized-light solarized-dark leuven monokai zenburn)
+   dotspacemacs-verbose-loading nil
+   dotspacemacs-visual-line-move-text t
+   dotspacemacs-which-key-delay 0.4
+   dotspacemacs-which-key-position 'bottom
    dotspacemacs-whitespace-cleanup nil
    ))
 
@@ -121,7 +116,7 @@
 
   ;;;; python
   (setq python-indent-offset 4)
-  (setenv "WORKON_HOME" "~/.pyenv/versions")
+  (setenv "WORKON_HOME" "~/.conda/envs")
   ;; (setq python-shell-interpreter "ipython2")
 
   ;;;; helper functions
