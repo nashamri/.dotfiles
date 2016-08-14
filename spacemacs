@@ -32,8 +32,8 @@
             shell-default-position 'bottom)
      ranger
      semantic
-     spell-checking
-     syntax-checking
+     (spell-checking :variables spell-checking-enabled-by-default nil)
+     (syntax-checking :variables syntax-checking-enable-by-default nil)
      version-control
      )
    dotspacemacs-additional-packages '()
@@ -133,6 +133,7 @@
     (interactive)
        "Exports pdf of my supervisory meetings."
        (org-latex-export-to-pdf nil t nil nil nil))
+  (setq  org-log-into-drawer t)
   (setq org-agenda-files (list "~/Dropbox/Org/phd.org"))
   (setq org-capture-templates
         '(("p" "PhD" entry
