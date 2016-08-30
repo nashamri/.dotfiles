@@ -10,6 +10,7 @@
      better-defaults
      clojure
      (colors :variables colors-enable-rainbow-identifiers nil)
+     csv
      emacs-lisp
      ;; eyebrowse
      git
@@ -32,7 +33,7 @@
             shell-default-position 'bottom)
      ranger
      semantic
-     (spell-checking :variables spell-checking-enabled-by-default nil)
+     (spell-checking :variables spell-checking-enable-by-default nil)
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      version-control
      )
@@ -177,7 +178,7 @@ parent."
   (eval-after-load 'org
     '(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0)))
   (setq font-latex-fontify-sectioning 1.0)
-
+  (add-to-list 'warning-suppress-types '(yasnippet backquote-change))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
